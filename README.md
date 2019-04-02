@@ -1,0 +1,1 @@
+https://coderwall.com/p/y5rtzq/created-a-heroku-app-but-i-want-to-change-the-name-now
