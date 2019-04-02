@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href= {{  url_for('static', filename='landing-page.min.css' )  }} rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href= {{  url_for('static', filename='style.css' )  }}>
+    <title>ConnectFour Game</title>
+	</head>
+	<body>
+	
+	<div>
+		<audio autoplay hidden id="music_player">
+		<source src= {{  url_for('static', filename='Niya - A Beginning (Vlog No Copyright Music).mp3' )  }} type="audio/mpeg">
+			If you're reading this, audio isn't supported. 
+		</audio>
+	</div>
+
+	
+	<div class="alert hide alert-primary" id="gameresult">
+		<button type="button" class="close" data-dismiss="alert">x</button>
+		<p id="whowin"></p>
+	</div>
+
+	<div class="center_padding">
+	<table id="gamegrid" class="table table-bordered col col-md-4" align="center">
+	  <thead>
+		<tr>
+		  <th scope="col">1</th>
+		  <th scope="col">2</th>
+		  <th scope="col">3</th>
+		  <th scope="col">4</th>
+		  <th scope="col">5</th>
+		  <th scope="col">6</th>
+		  <th scope="col">7</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr id=row0">
+		  <td class="col0">0</td>
+		  <td class="col1">0</td>
+		  <td class="col2">0</td>
+		  <td class="col3">0</td>
+		  <td class="col4">0</td>
+		  <td class="col5">0</td>
+		  <td class="col6">0</td>
+		</tr>
+		<tr id=row1">
+		  <td class="col0">0</td>
+		  <td class="col1">0</td>
+		  <td class="col2">0</td>
+		  <td class="col3">0</td>
+		  <td class="col4">0</td>
+		  <td class="col5">0</td>
+		  <td class="col6">0</td>
+		</tr>
+		<tr id=row2">
+		  <td class="col0">0</td>
+		  <td class="col1">0</td>
+		  <td class="col2">0</td>
+		  <td class="col3">0</td>
+		  <td class="col4">0</td>
+		  <td class="col5">0</td>
+		  <td class="col6">0</td>
+		</tr>
+		<tr id=row3">
+		  <td class="col0">0</td>
+		  <td class="col1">0</td>
+		  <td class="col2">0</td>
+		  <td class="col3">0</td>
+		  <td class="col4">0</td>
+		  <td class="col5">0</td>
+		  <td class="col6">0</td>
+		</tr>
+		<tr id=row4">
+		  <td class="col0">0</td>
+		  <td class="col1">0</td>
+		  <td class="col2">0</td>
+		  <td class="col3">0</td>
+		  <td class="col4">0</td>
+		  <td class="col5">0</td>
+		  <td class="col6">0</td>
+		</tr>
+		<tr id=row5">
+		  <td class="col0">0</td>
+		  <td class="col1">0</td>
+		  <td class="col2">0</td>
+		  <td class="col3">0</td>
+		  <td class="col4">0</td>
+		  <td class="col5">0</td>
+		  <td class="col6">0</td>
+		</tr>
+	  </tbody>
+	</table>
+	
+	
+	<div align="center">
+		<button id="restartbtn" type="button" class="btn btn-success" >New Game!!</button>
+		<button id="musiccontrol" type="button" class="btn btn-primary">Pause Music</button>
+	</div>
+	</div>
+	
+	<footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+			<p class="text-muted large">Wong, Yat Man  (2019/3/28)</p>
+          </ul>
+        </div>
+      </div>
+    </div>
+	</footer>
+
+
+	<!-- Optional JavaScript -->		
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<!--Real jQuery-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script>window.jQuery || document.write('<script src="{{
+		url_for('static', filename='jquery.js') }}">\x3C/script>')
+	</script>
+
+
+	<script type=text/javascript>
+		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
+
+	<script src= {{  url_for('static', filename='handle.js' )  }}></script>
+
+	<!-- End importing--> 
+
+	</body>
+  
+</html>

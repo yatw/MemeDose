@@ -1,0 +1,16 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+}
+
+.center_padding{
+ margin-top:120px;
+}
+
+footer {
+  margin-top: auto;
+}
