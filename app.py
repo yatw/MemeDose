@@ -88,7 +88,7 @@ def get_meme(meme_sub, sortby, quantity):
 
     for meme in meme_page:
         if not meme.stickied and is_image(meme.url):
-            meme_list.append(meme.url)
+            meme_list.append([meme.title,meme.url])
         if (len(meme_list) >= quantity):
             break            
 

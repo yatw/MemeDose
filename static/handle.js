@@ -47,7 +47,8 @@ function display_meme(memelist){
 	//<img src="cinqueterre.jpg" class="img-rounded" alt="Cinque Terre"> 
 
 	for (i = 0; i < memelist.length; i++){
-		content += "<img src=" + memelist[i] + " style=\"width:640px;height:480px;border:0;\""  +  ">"
+		content += "<h2><i>" + memelist[i][0] + "</i></h2>";
+		content += "<img src=" + memelist[i][1] + " style=\"width:640px;height:480px;border:0;\""  +  ">"
 		content += "<hr>"
 	}
 	document.getElementById('meme_display').innerHTML = content;
