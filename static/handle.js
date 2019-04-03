@@ -1,93 +1,56 @@
-
-
-$('#musiccontrol').click(function(){
+$(document).ready(function() {
 	
-	var player = document.getElementById('music_player');
+	$("#loading_alert").hide();
+	$("#jojo_alert").hide();
+	$("#error_alert").hide();
+	$("#nothing_alert").hide();
 	
-	if (player.paused){
-		$("#musiccontrol").html("Pause Music");
-		player.play();
-	}else{
-		$("#musiccontrol").html("Play Music");
-		player.pause();		
-	}
+	$('button').click(function(event) {
+	   $("#error_alert").hide();
+	   $("#nothing_alert").hide();
+
+	   var meme_sub = event.target.id;
+	   var sortby = document.getElementById('sortby').value
+	   var quantity = document.getElementById('quantity').value
+	   
+	   if (meme_sub == "ShitPostCrusaders"){
+		   $("#jojo_alert").html('Good Job!').removeClass("hide").hide().fadeIn("slow");
+	   }else{
+		   $("#loading_alert").html('Fetching the meme...').removeClass("hide").hide().fadeIn("slow");
+	   }
+
+		$.ajax({
+			url: "/display_meme",
+			type: "get",
+			data: {meme_sub: meme_sub, sortby: sortby, quantity: quantity},
+			success: function(response) {
+				
+				display_meme(response.memelist)
+			    $("#jojo_alert").hide();
+				$("#loading_alert").hide();
+				
+				if (response.memelist.length == 0){
+					$("#nothing_alert").show();
+				}
+
+		},
+			error: function(xhr) {
+				$("#error_alert").show();
+		}})
+	});   
 });
 
-$('#restartbtn').click(function(){
-	$("#gameresult").hide();
+function display_meme(memelist){
 	
-	$.getJSON($SCRIPT_ROOT + '/_restart_game', {}, function(data) {
-	});
+	var content = ""
 	
-	clean_table();
-});
+	//<img src="cinqueterre.jpg" class="img-rounded" alt="Cinque Terre"> 
 
-function clean_table(){
-	
-	var t = document.getElementById('gamegrid');
-	
-	for (var r = 0; r <= 5; r++){		
-		for (var c = 0; c <=6 ; c++){
-			t.rows[r+1].cells[c].innerHTML = '0';
-			t.rows[r+1].cells[c].setAttribute("style", "background:#FFFFFF;");
-		}
+	for (i = 0; i < memelist.length; i++){
+		content += "<img src=" + memelist[i] + " style=\"width:640px;height:480px;border:0;\""  +  ">"
+		content += "<hr>"
 	}
+	document.getElementById('meme_display').innerHTML = content;
+	
 }
 
-
-$(document).ready(function() {
-
-	var game_on = true;
-	$("#gameresult").hide();
-	
-	
-	$.ajaxSetup({
-		async: false
-	})
-	
-	$('td').click(function(){
-		
-		$.getJSON($SCRIPT_ROOT + '/_game_status', {}, function(data) {
-			if (data.game_status == "True"){
-				game_on = true;
-			}
-		});
-		
-		if (game_on){
-			
-			var col = $(this).parent().children().index($(this));
-			var row = $(this).parent().parent().children().index($(this).parent());
-			//console.log('Column: ' + col);
-			
-			$.getJSON($SCRIPT_ROOT + '/_player_move', {
-				column: col
-			}, function(data) {
-				
-				if (data.row >= 0){		
-					var t = document.getElementById('gamegrid');
-					t.rows[data.row+1].cells[col].innerHTML = data.color;
-
-					if (data.color == "1"){
-						t.rows[data.row+1].cells[col].setAttribute("style", "background:#F47983;");
-						$("#whowin").html("<strong>Red Win!!</strong>");
-					}else{
-						t.rows[data.row+1].cells[col].setAttribute("style", "background:#f4ce42;");
-						$("#whowin").html("<strong>Yellow Win!!</strong>");
-					}
-				
-					if (data.win == "True"){
-						game_on = false;
-						$("#gameresult").show();
-					}else if (data.tie == "True"){
-						$("#whowin").html("<strong>This is a Tie!!</strong>");
-						game_on = false;
-						$("#gameresult").show();
-					}	
-				}
-			});
-		}else{
-			console.log("Already Game Over")
-		}
-
-	});
-});

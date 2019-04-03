@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href= {{ url_for('static', filename='style.css' ) }}>
+	
+    <title>MemeDose</title>
+  </head>
+  <body>	
+	
+	
+	<div class="toppadding">
+
+	<div class="container">
+	
+		<h1>Get your daily dose of Meme<h1>
+		
+		<div class="toppadding">
+		<div id ="loading_alert" class="alert hide alert-primary" role="alert">
+		  
+		</div>
+		<div id ="jojo_alert" class="alert hide alert-success" role="alert">
+	
+		</div>
+		<div id = "nothing_alert" class="alert hide alert-warning" role="alert">
+			There is nothing in this section
+		</div>
+		<div id ="error_alert" class="alert hide alert-danger" role="alert">
+			Something went wrong
+		</div>
+	
+		<select id="sortby" class="form-control">
+			<option value="new">New</option>
+			<option value="hot">Hot</option>
+			<option value="rising">Rising</option>
+		</select>
+		
+		<div class="toppadding">
+		
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+			<span class="input-group-text" id="inputGroup-sizing-default">Quantity (20max)</span>
+		  </div>
+		  <input id ="quantity" placeholder="5" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+		</div>
+	
+		<button type="button" id="meme" class="btn btn-primary">Meme</button>
+		<button type="button" id="ShitPostCrusaders" class="btn btn-success">Jojo</button>
+		<button type="button" id="darkmeme" class="btn btn-dark">Dark</button>
+	</div>
+	
+	<hr>
+	 
+	<div id="meme_display"></div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src= {{ url_for('static', filename='handle.js' ) }}></script>
+  </body>
+</html>

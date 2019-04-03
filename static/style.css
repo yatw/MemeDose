@@ -7,10 +7,16 @@ body {
   flex-flow: column;
 }
 
-.center_padding{
- margin-top:120px;
+.toppadding{
+ margin-top:20px;
 }
 
 footer {
   margin-top: auto;
+}
+
+hr{
+  height: 0px;
+  border: none;
+  border-top: 3px solid gray;
 }
