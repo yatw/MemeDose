@@ -1,4 +1,8 @@
-https://coderwall.com/p/y5rtzq/created-a-heroku-app-but-i-want-to-change-the-name-now
+# MemeDose
 
-should display meme on the page, with button to click what section from
-have auto email message function, user can turn this functin on and off
+MemeDose is designed to send fresh dose of meme to my email everyday at 6AM\
+User can also browse meme directly through the web interface
+
+Powered by [Reddit API PRAW](https://praw.readthedocs.io/en/latest/) and [SENDGRID API](https://github.com/sendgrid/sendgrid-python) with [Python Scheduler](https://apscheduler.readthedocs.io/en/latest/) 
+
+[Where ideas and creativity sparkle!](https://memedose.herokuapp.com/)

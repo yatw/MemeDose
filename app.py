@@ -26,7 +26,7 @@ def index():
     
     scheduler = BackgroundScheduler({'apscheduler.timezone': 'America/Los_Angeles'})
     scheduler.start()
-    scheduler.add_job(func=keep_awake, trigger="interval", minutes=10)
+    scheduler.add_job(func=keep_awake, trigger="interval", hours=1)
     scheduler.add_job(send_meme_gmail,'cron', hour=6, end_date='2022-05-30')
     
 
